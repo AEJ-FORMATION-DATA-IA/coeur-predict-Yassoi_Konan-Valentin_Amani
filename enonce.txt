@@ -1,0 +1,8 @@
+
+- Base de données sqlite avec test value.
+- Menu:
+accueil
+predictition simple - renvoi sur le formulaire individuel
+predictition multiple - renvoi sur l'ensemble des individus et affiche les predictitions
+
+A rendre mardi 30 novembre 20h.

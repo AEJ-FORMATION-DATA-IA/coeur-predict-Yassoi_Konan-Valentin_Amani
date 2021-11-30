@@ -1,0 +1,27 @@
+
+<!-- Etablis un lien entre simple_predict.html et home.html. -->
+{% extends "home.html" %}
+
+{% block multiple_predict %}
+
+<div class="d-flex justify-content-center"">
+    <p class="fw-bold">Prediction Multiple</p>
+</div>
+
+<form action="{{url_for('multiple_predict')}}" method="post" class="container mx-auto col-12" style="width: 1000px;">
+    <!--- Nombre Individus --->
+    <div class="mb-3">
+        <label for="individu" class="form-label fw-bold">Entrez le nombre d'Individus</label>
+        <input type="text" class="form-control" id="individu" name="individu" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-5">Predict</button>
+</form>
+
+<div class="card" style="width: 1000px;">
+    <div class="card-body h4 d-flex justify-content-center text-center">
+        {{retour}}
+    </div>
+</div>
+
+{% endblock %}
