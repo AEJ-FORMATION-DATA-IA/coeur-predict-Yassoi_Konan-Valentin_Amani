@@ -1,5 +1,4 @@
 
-
 """
 Application de Prédiction de Maladie Cardiaque
 """
@@ -16,10 +15,8 @@ from flask import Flask, request, render_template
 import sqlite3
 
 
-
 # Instancie la classe Flask.
 app = Flask(__name__)
-
 
 
 # Charge le dataset coeur.
@@ -44,7 +41,6 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 model = pickle.load(open("model.pkl", "rb"))
 
 
-
 # Crée la base de données.
 connection = sqlite3.connect("database.db")
 cursor = connection.cursor()
@@ -54,7 +50,6 @@ x_test.to_sql("user", connection, if_exists="replace", index=False)
 
 connection.commit()
 connection.close()
-
 
 
 # Spécifie la route accueil.
@@ -117,7 +112,6 @@ def simple_predict():
 # Spécifie la route multiple predict.
 @app.route("/multiple_predict/", methods=["POST", "GET"])
 def multiple_predict():
-
     # Crée la connection à la base de données.
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
@@ -139,7 +133,6 @@ def multiple_predict():
             liste = []
 
             for i in range(individus):
-
                 # Transforme les données de chaque individu en tableau numpy.
                 row[i] = list(row[i])
                 features = np.array(row[i])
@@ -155,7 +148,7 @@ def multiple_predict():
 
                 # Ajoute le résultat de chaque prédiction.
                 liste.append(result)
-                # Défini la variable d'itération.
+                # Défini le générateur d'itération.
                 j = range(individus)
 
             connection.commit()
@@ -170,4 +163,3 @@ def multiple_predict():
 # Exécute l'application.
 if __name__ == "__main__":
     app.run(debug=True)
-
